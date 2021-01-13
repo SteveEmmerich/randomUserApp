@@ -1,0 +1,58 @@
+<section *ngIf="user$ | async as user" class="content">
+  <div class="columns is-centered is-mobile">
+    <div class="column is-half">
+      <div class="card is-meduim is-shady">
+        <div class="columns card-content">
+          <div class="column is-3">
+            <figure class="image is-128x128">
+              <img
+                class="is-rounded"
+                src="{{ user.picture.large }}"
+                alt="Placeholder image"
+              />
+            </figure>
+          </div>
+
+          <div class="columns is-mobile">
+            <div class="column is-2"></div>
+            <div class="column has-text-weight-semibold">
+              <p>Name:</p>
+
+              <p>Email:</p>
+              <p>Phone:</p>
+              <p>location:</p>
+            </div>
+            <div class="column">
+              <p>
+                {{ user.name.first }}
+                {{ user.name.last }}
+              </p>
+              <p>{{ user.email }}</p>
+              <p>{{ user.phone }}</p>
+              <p>
+                {{ user.location.street.number }}
+                {{ user.location.street.name }}
+                <br />
+                {{ user.location.city }}, {{ user.location.state }}
+                {{ user.location.postcode }}
+                <br />
+                {{ user.location.country }}
+              </p>
+            </div>
+            <div class="column is-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="columns is-mobile is-centered">
+    <div class="column is-3">
+      <button
+        (click)="refreshUser()"
+        class="button is-medium is-fullwidth is-link"
+      >
+        Get New User
+      </button>
+    </div>
+  </div>
+</section>
